@@ -1,0 +1,23 @@
+{
+    "tag_name": "v1.0.0",
+    "name": "My First Release",
+    "body": "This is my first release of the project.",
+    "draft": false,
+    "prerelease": false,
+    "assets": [
+      {
+        "name": "my-binary.zip",
+        "label": "My binary executable",
+        "content_type": "application/zip",
+        "size": 12345,
+        "browser_download_url": "https://github.com/my-org/my-repo/releases/download/v1.0.0/my-binary.zip"
+      },
+      {
+        "name": "my-source-code.tar.gz",
+        "label": "My source code",
+        "content_type": "application/x-gzip",
+        "size": 54321,
+        "browser_download_url": "https://github.com/my-org/my-repo/releases/download/v1.0.0/my-source-code.tar.gz"
+      }
+    ]
+  }
