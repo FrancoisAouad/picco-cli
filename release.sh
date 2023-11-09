@@ -14,4 +14,6 @@ mkdir -p $DIR/build
 mv $DIR/target/picco-cli-$RELEASE.jar $DIR/build
 
 GITHUB_TOKEN=$(cat ~/.github_terraform_token)
+cd iac
+terraform get
 terraform apply -var="github_token=${GITHUB_TOKEN}"

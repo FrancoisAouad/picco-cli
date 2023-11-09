@@ -26,6 +26,7 @@ logs
 /dist/
 /nbdist/
 /.nb-gradle/
+/iac/.terraform
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
