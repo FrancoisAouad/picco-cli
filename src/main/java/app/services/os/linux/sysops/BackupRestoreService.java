@@ -1,8 +1,8 @@
 package app.services.os.linux.sysops;
 
-import org.springframework.shell.standard.ShellComponent;
+import org.springframework.stereotype.Service;
 
-@ShellComponent
+@Service
 public class BackupRestoreService {
 
 }

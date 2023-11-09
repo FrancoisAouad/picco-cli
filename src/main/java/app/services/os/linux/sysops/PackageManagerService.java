@@ -1,8 +1,8 @@
 package app.services.os.linux.sysops;
 
-import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;
+import org.springframework.stereotype.Service;
 
 import app.global.GlobalService;
 import app.global.TerminalService;
@@ -10,7 +10,7 @@ import app.global.TerminalService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@ShellComponent
+@Service
 public class PackageManagerService {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
