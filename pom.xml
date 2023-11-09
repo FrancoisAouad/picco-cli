@@ -58,6 +58,7 @@
 	</dependencyManagement>
 
 	<build>
+		<finalName>picco-cli-${version}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.graalvm.buildtools</groupId>
