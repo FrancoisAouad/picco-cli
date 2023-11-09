@@ -1,0 +1,8 @@
+spring:
+  main:
+   banner-mode: off
+logging:
+ file:
+   path: /logs
+ level:
+   root: OFF

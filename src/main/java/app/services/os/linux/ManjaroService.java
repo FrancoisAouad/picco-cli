@@ -1,4 +1,4 @@
-package app.os.linux;
+package app.services.os.linux;
 
 public class ManjaroService {
 

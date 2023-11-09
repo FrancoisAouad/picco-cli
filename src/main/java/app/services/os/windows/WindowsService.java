@@ -1,4 +1,4 @@
-package app.os.windows;
+package app.services.os.windows;
 
 public class WindowsService {
 

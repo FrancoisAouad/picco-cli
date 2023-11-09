@@ -1,4 +1,4 @@
-package app.cmd;
+package app.services.os.linux.sysops;
 
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
@@ -11,10 +11,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @ShellComponent
-public class SystemCommands {
+public class PackageManagerService {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
-    public SystemCommands() {
+    public PackageManagerService() {
     }
 
     @ShellMethod(key = "init", value = "Start system service")
