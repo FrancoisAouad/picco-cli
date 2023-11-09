@@ -1,11 +1,11 @@
-package app.commands;
+package app.cmd;
 
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;
 
 import app.global.GlobalService;
-import app.utils.TerminalExecutor;
+import app.global.TerminalService;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,22 +14,24 @@ import org.apache.logging.log4j.Logger;
 public class SystemCommands {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
-
     public SystemCommands() {
     }
+
     @ShellMethod(key = "init", value = "Start system service")
-    public void startServiceProcess(@ShellOption()String service) {
+    public void startServiceProcess(@ShellOption() String service) {
         var command = "systemctl start";
-        if(!service.isEmpty()){
-            command+=" "+service;   
+
+        if (!service.isEmpty()) {
+            command += " " + service;
         }
+
         try {
             String os = GlobalService.getOperatingSystem();
             if (os.toLowerCase().contains("windows")) {
                 logger.info("Operating System is WINDOWS");
-                TerminalExecutor.executeCommand(command);
+                TerminalService.executeCommand(command);
             } else {
-                TerminalExecutor.executeCommand(command);
+                TerminalService.executeCommand(command);
                 logger.info("Operating System is LINUX");
             }
         } catch (Exception e) {
@@ -38,18 +40,18 @@ public class SystemCommands {
     }
 
     @ShellMethod(key = "status", value = "Get service status")
-    public void getServiceStatus(@ShellOption()String service) {
+    public void getServiceStatus(@ShellOption() String service) {
         var command = "systemctl status";
-        if(!service.isEmpty()){
-            command+=" "+service;   
+        if (!service.isEmpty()) {
+            command += " " + service;
         }
         try {
             String os = GlobalService.getOperatingSystem();
             if (os.toLowerCase().contains("windows")) {
                 logger.info("Operating System is WINDOWS");
-                TerminalExecutor.executeCommand(command);
+                TerminalService.executeCommand(command);
             } else {
-                TerminalExecutor.executeCommand(command);
+                TerminalService.executeCommand(command);
                 logger.info("Operating System is LINUX");
             }
         } catch (Exception e) {
@@ -58,28 +60,23 @@ public class SystemCommands {
     }
 
     @ShellMethod(key = "stop", value = "Stop system service")
-    public void stopServiceProcess(@ShellOption()String service) {
+    public void stopServiceProcess(@ShellOption() String service) {
         var command = "systemctl stop";
-        if(!service.isEmpty()){
-            command+=" "+service;   
+        if (!service.isEmpty()) {
+            command += " " + service;
         }
         try {
             String os = GlobalService.getOperatingSystem();
             if (os.toLowerCase().contains("windows")) {
                 logger.info("Operating System is WINDOWS");
-                TerminalExecutor.executeCommand(command);
+                TerminalService.executeCommand(command);
             } else {
-                TerminalExecutor.executeCommand(command);
+                TerminalService.executeCommand(command);
                 logger.info("Operating System is LINUX");
             }
         } catch (Exception e) {
             logger.error("Failed to execute command: " + command, e.getMessage());
         }
     }
-
-
-
-
-
 
 }

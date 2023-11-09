@@ -1,4 +1,4 @@
-package app.utils;
+package app.global;
 
 import org.springframework.stereotype.Component;
 
@@ -7,15 +7,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 @Component
-public class TerminalExecutor {
-    private static TerminalExecutor instance = null;
+public class TerminalService {
+    private static TerminalService instance = null;
 
-    private TerminalExecutor() {
+    private TerminalService() {
     }
 
-    public static TerminalExecutor getInstance() {
+    public static TerminalService getInstance() {
         if (instance == null) {
-            instance = new TerminalExecutor();
+            instance = new TerminalService();
         }
         return instance;
     }
@@ -30,6 +30,4 @@ public class TerminalExecutor {
         reader.close();
     }
 
-
 }
-

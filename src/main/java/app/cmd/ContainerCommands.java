@@ -1,40 +1,33 @@
-package app.commands;
+package app.cmd;
 
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;
 
 import app.global.GlobalService;
-import app.utils.TerminalExecutor;
+import app.global.TerminalService;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @ShellComponent
-public class DockerCommands {
+public class ContainerCommands {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
-
-    public DockerCommands() {
+    public ContainerCommands() {
     }
 
     @ShellMethod(key = "start monitoring", value = "Starts prometheus system monitoring")
     public void startMonitoring() {
         var command = "cd /home/Documents/monitoring & docker-compose up -d";
         try {
-            String os = GlobalService.getOperatingSystem();
-            if (os.toLowerCase().contains("windows")) {
-                logger.info("Operating System is WINDOWS");
-                TerminalExecutor.executeCommand(command);
-            } else {
-                TerminalExecutor.executeCommand(command);
-                logger.info("Operating System is LINUX");
-            }
+            TerminalService.executeCommand(command);
+            logger.info("Operating System is LINUX");
         } catch (Exception e) {
             logger.error("Failed to execute command: " + command, e.getMessage());
         }
     }
-  
+
     @ShellMethod(key = "stop monitoring", value = "Stops prometheus system monitoring")
     public void stopMonitoring() {
         var command = "cd /home/Documents/monitoring & docker-compose down";
@@ -42,9 +35,9 @@ public class DockerCommands {
             String os = GlobalService.getOperatingSystem();
             if (os.toLowerCase().contains("windows")) {
                 logger.info("Operating System is WINDOWS");
-                TerminalExecutor.executeCommand(command);
+                TerminalService.executeCommand(command);
             } else {
-                TerminalExecutor.executeCommand(command);
+                TerminalService.executeCommand(command);
                 logger.info("Operating System is LINUX");
             }
         } catch (Exception e) {
@@ -55,14 +48,14 @@ public class DockerCommands {
     @ShellMethod(key = "docker list", value = "Return list of all containers")
     public void getContainerList() {
         var command = "docker ps -a";
-      
+
         try {
             String os = GlobalService.getOperatingSystem();
             if (os.toLowerCase().contains("windows")) {
                 logger.info("Operating System is WINDOWS");
-                TerminalExecutor.executeCommand(command);
+                TerminalService.executeCommand(command);
             } else {
-                TerminalExecutor.executeCommand(command);
+                TerminalService.executeCommand(command);
                 logger.info("Operating System is LINUX");
             }
         } catch (Exception e) {
@@ -82,13 +75,13 @@ public class DockerCommands {
                 if (!name.isEmpty()) {
                     finalCmd += " " + name;
                 }
-                TerminalExecutor.executeCommand(finalCmd);
+                TerminalService.executeCommand(finalCmd);
             } else {
                 finalCmd = "/bin/bash " + command;
                 if (!name.isEmpty()) {
                     finalCmd += " " + name;
                 }
-                TerminalExecutor.executeCommand(finalCmd);
+                TerminalService.executeCommand(finalCmd);
                 logger.info("Operating System is LINUX");
             }
         } catch (Exception e) {
@@ -98,18 +91,18 @@ public class DockerCommands {
     }
 
     @ShellMethod(key = "init", value = "Stop Docker Container")
-    public void startServiceProcess(@ShellOption()String service) {
+    public void startServiceProcess(@ShellOption() String service) {
         var command = "systemctl start";
-        if(!service.isEmpty()){
-            command+=service;
+        if (!service.isEmpty()) {
+            command += service;
         }
         try {
             String os = GlobalService.getOperatingSystem();
             if (os.toLowerCase().contains("windows")) {
                 logger.info("Operating System is WINDOWS");
-                TerminalExecutor.executeCommand(command);
+                TerminalService.executeCommand(command);
             } else {
-                TerminalExecutor.executeCommand(command);
+                TerminalService.executeCommand(command);
                 logger.info("Operating System is LINUX");
             }
         } catch (Exception e) {
